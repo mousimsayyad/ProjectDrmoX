@@ -1,0 +1,60 @@
+package day39;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage2
+{
+	public WebDriver driver;
+	
+	//Constructor
+	LoginPage2(WebDriver driver)
+	{
+		this.driver= driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	
+	//WebElements Locators+identification
+	@FindBy(xpath="//img[@alt='company-branding']")WebElement img_logo;
+	@FindBy(name="username")WebElement txt_usrname;
+	@FindBy(name="password")WebElement txt_paswd;
+	@FindBy(xpath="//button[normalize-space()='Login']") WebElement btn_submit;
+	//@FindBy(tagName="a")List<WebElement> links;
+	
+	
+	/*By logo_img_loc = By.xpath("//img[@alt='company-branding']");
+	By txt_usrname_loc=By.name("username");
+	By txt_paswd_loc = By.name("password");
+	By btn_submit_loc=By.xpath("//button[normalize-space()='Login']");*/
+	
+	//action methods
+	
+	public void setUserName(String username)
+	{
+		txt_usrname.sendKeys(username);
+	}
+	
+	public void setPassword(String password)
+	{
+		txt_paswd.sendKeys(password);
+	}
+	
+	public void clickSubmit()
+	{
+		btn_submit.click();
+	}
+	
+	public boolean checkLogoPresence()
+	{
+		boolean status=img_logo.isDisplayed();
+		return status;
+	}
+	
+	
+}
